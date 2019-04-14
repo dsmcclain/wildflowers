@@ -11,6 +11,10 @@ class FlowersController < ApplicationController
     @flower = Flower.new
   end
 
+  def edit
+    @flower = Flower.find(params[:id])
+  end
+
   def create
     @flower = Flower.new(flower_params)
 
@@ -18,6 +22,16 @@ class FlowersController < ApplicationController
       redirect_to @flower
     else
       render 'new'
+    end
+  end
+
+  def update
+    @flower = Flower.find(params[:id])
+
+    if @flower.update(flower_params)
+      redirect_to @flower
+    else
+      render 'edit'
     end
   end
 

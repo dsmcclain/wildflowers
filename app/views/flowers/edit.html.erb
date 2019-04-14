@@ -1,33 +1,35 @@
-<h1>Add a New Flower to the Database</h1>
-
-<%=form_with scope: :flower, url: flowers_path, local: true do |form| %>
-  
+<h1>Edit flower</h1>
+ 
+<%= form_with(model: @flower, local: true) do |form| %>
+ 
   <% if @flower.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@flower.errors.count, "error") %> prohibited this article from being saved:
+        <%= pluralize(@flower.errors.count, "error") %> prohibited
+        this flower from being saved:
       </h2>
       <ul>
         <% @flower.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
-          <% end %>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
+ 
   <p>
     <%= form.label :name %><br>
     <%= form.text_field :name %>
   </p>
-
+ 
   <p>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
   </p>
-
+ 
   <p>
     <%= form.submit %>
   </p>
+ 
 <% end %>
-
+ 
 <%= link_to 'Back', flowers_path %>

@@ -14,6 +14,7 @@
       <td><%= flower.name%></td>
       <td><%= flower.description%></td>
       <td><%= link_to 'Show', flower_path(flower) %></td>
+      <td><%= link_to 'Edit', edit_flower_path(flower) %></td>
     </tr>
   <% end %>
 </table>
