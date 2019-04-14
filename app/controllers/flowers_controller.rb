@@ -1,4 +1,6 @@
 class FlowersController < ApplicationController
+
+  http_basic_authenticate_with name: "guest", password: "demo", except: [:index, :show]
   def index
     @flowers = Flower.all
   end

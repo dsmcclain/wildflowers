@@ -1,4 +1,6 @@
 class SightingsController < ApplicationController
+
+  http_basic_authenticate_with name: "guest", password: "demo", only: :destroy
   def create
     @flower = Flower.find(params[:flower_id])
     @sighting = @flower.sightings.create(sighting_params)
