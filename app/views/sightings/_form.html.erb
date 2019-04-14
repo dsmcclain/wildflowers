@@ -1,0 +1,17 @@
+<%= form_with(model: [ @flower, @flower.sightings.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :hiker %><br>
+    <%= form.text_field :hiker %>
+  </p>
+  <p>
+    <%= form.label :day %><br>
+    <%= form.text_field :day %>
+  </p>
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment %>
+  </p>
+  <p>
+    <%= form.submit%>
+  </p>
+<% end %>

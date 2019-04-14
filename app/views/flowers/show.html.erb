@@ -9,39 +9,10 @@
 </p>
 
 <h2>Sightings</h2>
-<% @flower.sightings.each do |sighting| %>
-  <p>
-    <strong>Hiker:</strong>
-    <%= sighting.hiker %>
-  </p>
-  <p>
-    <strong>Day:</strong>
-    <%= sighting.day %>
-  </p>
-  <p>
-    <strong>Comment:</strong>
-    <%= sighting.comment %>
-  </p>
-<% end %>
+<%= render @flower.sightings %>
 
 <h2>Add a Sighting:</h2>
-<%= form_with(model: [ @flower, @flower.sightings.build ], local: true) do |form| %>
-  <p>
-    <%= form.label :hiker %><br>
-    <%= form.text_field :hiker %>
-  </p>
-  <p>
-    <%= form.label :day %><br>
-    <%= form.text_field :day %>
-  </p>
-  <p>
-    <%= form.label :comment %><br>
-    <%= form.text_area :comment %>
-  </p>
-  <p>
-    <%= form.submit%>
-  </p>
-<% end %>
+<%= render 'sightings/form' %>
 
 <%= link_to 'Edit', edit_flower_path(@flower) %>
 <%= link_to 'Back', flowers_path %>
