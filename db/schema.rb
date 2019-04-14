@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_14_000855) do
+ActiveRecord::Schema.define(version: 2019_04_14_182735) do
 
   create_table "flowers", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sightings", force: :cascade do |t|
+    t.string "hiker"
+    t.date "day"
+    t.text "comment"
+    t.integer "flower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flower_id"], name: "index_sightings_on_flower_id"
   end
 
 end

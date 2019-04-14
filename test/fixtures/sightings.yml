@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hiker: MyString
+  day: 2019-04-14
+  comment: MyText
+  flower: one
+
+two:
+  hiker: MyString
+  day: 2019-04-14
+  comment: MyText
+  flower: two
