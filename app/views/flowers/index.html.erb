@@ -1,0 +1,17 @@
+<h1>Listing All Flowers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+
+  <% @flowers.each do |flower|%>
+    <tr>
+      <td><%= flower.name%></td>
+      <td><%= flower.description%></td>
+      <td><%= link_to 'Show', flower_path(flower) %></td>
+    </tr>
+  <% end %>
+</table>
