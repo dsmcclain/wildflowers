@@ -35,6 +35,13 @@ class FlowersController < ApplicationController
     end
   end
 
+  def destroy
+    @flower = Flower.find(params[:id])
+    @flower.destroy
+
+    redirect_to flowers_path
+  end
+
   private
 
   def flower_params

@@ -15,6 +15,9 @@
       <td><%= flower.description%></td>
       <td><%= link_to 'Show', flower_path(flower) %></td>
       <td><%= link_to 'Edit', edit_flower_path(flower) %></td>
+      <td><%= link_to 'Delete', flower_path(flower),
+              method: :delete,
+              data: { confirm: 'Delete this flower: Are you sure?'} %></td>
     </tr>
   <% end %>
 </table>
