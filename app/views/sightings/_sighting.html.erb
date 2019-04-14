@@ -9,4 +9,9 @@
 <p>
   <strong>Comment:</strong>
   <%= sighting.comment %>
+</p>
+<p>
+  <%= link_to 'Delete Sighting', [sighting.flower, sighting],
+      method: :delete,
+      data: { confirm: 'Delete sighting: Are you sure?' } %>
 </p>  
