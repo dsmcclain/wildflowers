@@ -1,1 +1,16 @@
 <h1>Add a New Flower to the Database</h1>
+<%=form_with scope: :flower, url: flowers_path, local: true do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :decription %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+  <% end %>
