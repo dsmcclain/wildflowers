@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-
-  resources :flowers do
-    resources :sightings
-  end
   
   root 'welcome#index'
+  match '*path', to: 'welcome#index', via: :all
 end
