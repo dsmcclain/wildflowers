@@ -16,7 +16,7 @@ class SightingsController < ApplicationController
 
   private
 
-  def sighting_params
-    params.require(:sighting).permit(:hiker, :day, :comment)
-  end
+    def sighting_params
+      params.require(:sighting).permit(:hiker, :day, :comment)
+    end
 end
