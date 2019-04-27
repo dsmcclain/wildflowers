@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+.debug_dump {
+  border: 1px solid #999;
+  background: #eee;
+  clear: both;
+  float: left;
+  padding: 10px;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
