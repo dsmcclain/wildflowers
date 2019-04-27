@@ -42,6 +42,13 @@ const Edit = () => {
 }
 
 class App extends Component {
+  // componentDidMount() {
+  //   window.fetch('/api/flowers')
+  //     .then(response => response.json())
+  //     .then(json => console.log(json))
+  //     .catch(error => console.log(error))
+  // }
+
   render() {
     return (
       <Router>
