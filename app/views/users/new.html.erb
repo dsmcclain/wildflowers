@@ -1,2 +1,24 @@
+<% provide(:title, 'Create Account') %>
 <h1>Create Account</h1>
-<p>Here is the signup page</h1>
+
+<%= form_with(model: @user, local: true) do |form| %>
+  <p>  
+    <%= form.label :name %><br/>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :email %><br/>
+    <%= form.text_field :email %>
+  </p>
+  <p>
+    <%= form.label :password %><br/>
+    <%= form.password_field :password %>
+  </p>
+  <p>  
+    <%= form.label :password_confirmation, "Password Confirmation" %><br/>
+    <%= form.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= form.submit "Create my account" %>
+  </p>
+<% end %>
