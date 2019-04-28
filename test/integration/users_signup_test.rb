@@ -21,6 +21,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                     password:               "fakeuser",
                                     password_confirmation:  "fakeuser" }}
     end
-    assert_redirected_to user_path(1)
+    assert is_logged_in?
   end
 end
