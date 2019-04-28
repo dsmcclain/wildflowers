@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  #match '*path', to: 'welcome#index', via: :all
+  get 'welcome/index'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  get 'welcome/index'
-
+  resources :users
   resources :flowers do
     resources :sightings
   end
-  resources :users
+ 
+  #alternate routes for react frontend:
+  #match '*path', to: 'welcome#index', via: :all
 end
