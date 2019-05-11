@@ -9,12 +9,30 @@ const Home = () => {
   )
 }
 
-const Index = () => {
-  return(
-  <div>
-    <h2>All Flowers</h2>
-  </div>
-  )
+class Index extends Component{
+  constructor(props) {
+    super(props);
+    this.state ={
+      flowers: [],
+    }
+  }
+  componentDidMount() {
+    fetch('/flowers.json')
+      .then(response => response.json())
+      .then(flowers => this.setState({flowers: flowers}))
+  }
+  render() {
+    const { flowers } = this.state;
+    return(
+      <div>
+        <h2>All Flowers</h2>
+        <ul>
+          {flowers.map(flower => 
+            <li>{flower.name}</li>)}
+        </ul>
+      </div>
+    )
+  }
 }
 
 const Show = () => {

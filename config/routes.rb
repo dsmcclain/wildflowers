@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   end
  
   #alternate routes for react frontend:
-  #match '*path', to: 'welcome#index', via: :all
+  match '*path', to: 'welcome#index', via: :all
 end
