@@ -28,19 +28,39 @@ class Index extends Component{
         <h2>All Flowers</h2>
         <ul>
           {flowers.map(flower => 
-            <li>{flower.name}</li>)}
+            <li><Link to={{
+                  pathname: '/show',
+                  state: { flower: flower }
+                }}>{flower.name}</Link>
+            </li>)}
         </ul>
       </div>
     )
   }
 }
 
-const Show = () => {
-  return(
-  <div>
-    <h2>Show Flower</h2>
-  </div>
-  )
+class Show extends Component{
+  render(){
+    const { flower } = this.props.location.state
+    return(
+    <div>
+      <p>
+        <strong>Flower:</strong>
+        {flower.name}
+      </p>
+      <p>
+        <strong>Description:</strong>
+        {flower.description}
+      </p>
+
+      <p>Sightings</p>
+      <p>Add a Sighting:</p>
+
+      <Link to='/edit'>Edit</Link>
+      <Link to='/index'>Back</Link>
+    </div>
+    )
+  }
 }
 
 const New = () => {
@@ -60,13 +80,6 @@ const Edit = () => {
 }
 
 class App extends Component {
-  // componentDidMount() {
-  //   window.fetch('/api/flowers')
-  //     .then(response => response.json())
-  //     .then(json => console.log(json))
-  //     .catch(error => console.log(error))
-  // }
-
   render() {
     return (
       <Router>
@@ -74,7 +87,6 @@ class App extends Component {
           <ul>
             <li><Link to ='/'>Home</Link></li>
             <li><Link to='/index'>Index</Link></li>
-            <li><Link to='/show'>Show</Link></li>
             <li><Link to='/new'>New</Link></li>
             <li><Link to='/edit'>Edit</Link></li>
           </ul>
