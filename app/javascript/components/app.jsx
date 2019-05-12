@@ -29,7 +29,7 @@ class Index extends Component{
         <ul>
           {flowers.map(flower => 
             <li><Link to={{
-                  pathname: '/show',
+                  pathname: `/show/${flower.id}`,
                   state: { flower: flower }
                 }}>{flower.name}</Link>
             </li>)}
