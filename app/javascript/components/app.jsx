@@ -63,12 +63,58 @@ class Show extends Component{
   }
 }
 
-const New = () => {
-  return(
-  <div>
-    <h2>Add Flower</h2>
-  </div>
-  )
+class New extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      name: '',
+      description: ''
+    }
+    this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInput(event){
+    const field = event.target.name;
+    this.setState({
+      [field]: event.target.value
+    })
+  }
+
+  handleSubmit(){
+    alert('You have sumbitted a flower: ' 
+          + this.state.name + ' ' + this.state.description)
+  }
+
+  render(){
+    return(
+      <div>
+        <h2>Add Flower</h2>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input
+              type="text"
+              name="name"
+              onChange={this.handleInput}
+              value={this.state.flowerName}
+            />
+          </label>
+          <br/>
+          <label>
+            Description:
+            <input
+              type="text"
+              name="description"
+              onChange={this.handleInput}
+              value={this.state.flowerName}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    )
+  }
 }
 
 const Edit = () => {
