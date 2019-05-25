@@ -72,6 +72,7 @@ class New extends Component{
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.postFlower = this.postFlower.bind(this);
   }
 
   handleInput(event){
@@ -83,7 +84,27 @@ class New extends Component{
 
   handleSubmit(){
     alert('You have sumbitted a flower: ' 
-          + this.state.name + ' ' + this.state.description)
+          + this.state.name + ' ' + this.state.description);
+    this.postFlower();
+  }
+
+  postFlower(){
+    let body = JSON.stringify({flower: {name: this.state.name, description: this.state.description} })
+    let token = document.getElementsByName('csrf-token')[0].content;
+    fetch('/flowers.json', {
+      method: 'POST',
+      body: body,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': token
+      }
+    })
+    .then(function (data) {
+      console.log('Request success: ', data);
+    })
+    .catch(function (error){
+      console.log('Request failure: ', error);
+    })
   }
 
   render(){
