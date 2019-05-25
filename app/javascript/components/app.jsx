@@ -53,7 +53,20 @@ class Show extends Component{
         {flower.description}
       </p>
 
-      <p>Sightings</p>
+      <p>
+        <strong>Sightings:</strong>
+        {flower.sightings.map(sighting =>
+          <ul>
+            <strong>Hiker: </strong>
+            {sighting.hiker}<br/>
+            <strong>Day: </strong>
+            {sighting.day} <br/>
+            <strong>Comment: </strong>
+            {sighting.comment}<br/>
+          </ul>
+        )}
+      </p>
+    
       <p>Add a Sighting:</p>
 
       <Link to='/edit'>Edit</Link>
