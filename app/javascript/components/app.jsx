@@ -59,11 +59,14 @@ class Show extends Component{
   }
 
   handleSubmit(){
-    let body = JSON.stringify({flower: 
+    let id = this.props.location.state.flower.id
+    let body = JSON.stringify({flower:
                                 {sightings: {
                                   hiker: this.state.hiker,
                                   date: this.state.date,
-                                  comment: this.state.comment} 
+                                  comment: this.state.comment,
+                                  flower_id: id
+                                  } 
                                 }
                               })
     let token = document.getElementsByName('csrf-token')[0].content;
