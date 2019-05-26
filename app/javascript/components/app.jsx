@@ -40,6 +40,49 @@ class Index extends Component{
 }
 
 class Show extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      hiker: '',
+      date: '',
+      comment: '',
+    }
+    this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInput(event){
+    const field = event.target.name;
+    this.setState({
+      [field]: event.target.value
+    })
+  }
+
+  handleSubmit(){
+    let body = JSON.stringify({flower: 
+                                {sightings: {
+                                  hiker: this.state.hiker,
+                                  date: this.state.date,
+                                  comment: this.state.comment} 
+                                }
+                              })
+    let token = document.getElementsByName('csrf-token')[0].content;
+    fetch('/flowers.json', {
+      method: 'POST',
+      body: body,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': token
+      }
+    })
+    .then(function (data) {
+      console.log('Request success: ', data);
+    })
+    .catch(function (error){
+      console.log('Request failure: ', error);
+    })
+  }
+
   render(){
     const { flower } = this.props.location.state
     return(
@@ -66,8 +109,42 @@ class Show extends Component{
           </ul>
         )}
       </p>
-    
-      <p>Add a Sighting:</p>
+
+      <div>
+        <h2>Add a Sighting:</h2>
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Hiker:
+                <input
+                  type="text"
+                  name="hiker"
+                  onChange={this.handleInput}
+                  value={this.state.hiker}
+                />
+              </label>
+              <br/>
+              <label>
+                Date:
+                <input
+                  type="text"
+                  name="date"
+                  onChange={this.handleInput}
+                  value={this.state.date}
+                />
+              </label>
+              <br/>
+              <label>
+                Comment:
+                <input
+                  type="text"
+                  name="comment"
+                  onChange={this.handleInput}
+                  value={this.state.comment}
+                />
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
+        </div>
 
       <Link to='/edit'>Edit</Link>
       <Link to='/index'>Back</Link>
@@ -131,7 +208,7 @@ class New extends Component{
               type="text"
               name="name"
               onChange={this.handleInput}
-              value={this.state.flowerName}
+              value={this.state.name}
             />
           </label>
           <br/>
@@ -141,7 +218,7 @@ class New extends Component{
               type="text"
               name="description"
               onChange={this.handleInput}
-              value={this.state.flowerName}
+              value={this.state.description}
             />
           </label>
           <input type="submit" value="Submit" />
