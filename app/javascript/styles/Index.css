@@ -1,0 +1,33 @@
+.dashboard-container {
+  align-items: center;
+  background: rgba(40,40,80,0.3);
+  border-radius: 10px;
+  box-shadow: -5px 5px 2px #999;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+}
+.flowercard-rows{
+  align-self: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: inline-flex;
+}
+.flower-card{
+  border: 1px solid #555;
+  background: rgba(40,40,80,0.4);
+  border-radius: 6px;
+  box-shadow: -4px 4px 2px #888;
+  flex-direction: row;
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+  width: 225px;
+}
+.flower-link{
+  color: rgba(220,220,220,1);
+}
+.flower-link:visited{
+  color: rgba(180,180,180,0.8);
+}

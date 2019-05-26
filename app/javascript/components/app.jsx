@@ -1,42 +1,15 @@
 import React, {Component} from 'react';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import Index from "./Index.jsx";
+import "../styles/app.css";
 
 const Home = () => {
   return(
   <div>
     <h2>The Wildflowers of Mt. Hood</h2>
+    <Index />
   </div>
   )
-}
-
-class Index extends Component{
-  constructor(props) {
-    super(props);
-    this.state ={
-      flowers: [],
-    }
-  }
-  componentDidMount() {
-    fetch('/flowers.json')
-      .then(response => response.json())
-      .then(flowers => this.setState({flowers: flowers}))
-  }
-  render() {
-    const { flowers } = this.state;
-    return(
-      <div>
-        <h2>All Flowers</h2>
-        <ul>
-          {flowers.map(flower => 
-            <li><Link to={{
-                  pathname: `/show/${flower.id}`,
-                  state: { flower: flower }
-                }}>{flower.name}</Link>
-            </li>)}
-        </ul>
-      </div>
-    )
-  }
 }
 
 class Show extends Component{
@@ -243,7 +216,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="canvas">
           <ul>
             <li><Link to ='/'>Home</Link></li>
             <li><Link to='/index'>Index</Link></li>
