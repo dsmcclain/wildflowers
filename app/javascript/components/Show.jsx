@@ -7,7 +7,7 @@ class Show extends Component{
     super(props);
     this.state = {
       hiker: '',
-      date: '',
+      day: '',
       comment: '',
     }
     this.handleInput = this.handleInput.bind(this);
@@ -23,17 +23,14 @@ class Show extends Component{
 
   handleSubmit(){
     let id = this.props.location.state.flower.id
-    let body = JSON.stringify({flower:
-                                {sightings: {
+    let body = JSON.stringify({sighting: {
                                   hiker: this.state.hiker,
-                                  date: this.state.date,
-                                  comment: this.state.comment,
-                                  flower_id: id
+                                  day: this.state.day,
+                                  comment: this.state.comment
                                   } 
-                                }
                               })
     let token = document.getElementsByName('csrf-token')[0].content;
-    fetch('/flowers.json', {
+    fetch(`/flowers/${id}/sightings.json`, {
       method: 'POST',
       body: body,
       headers: {
@@ -92,12 +89,12 @@ class Show extends Component{
               </label>
               <br/>
               <label>
-                Date:
+                Day:
                 <input
                   type="text"
-                  name="date"
+                  name="day"
                   onChange={this.handleInput}
-                  value={this.state.date}
+                  value={this.state.day}
                 />
               </label>
               <br/>
