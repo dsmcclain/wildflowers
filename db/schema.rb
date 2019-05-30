@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_190915) do
+ActiveRecord::Schema.define(version: 2019_05_30_171632) do
 
   create_table "flowers", force: :cascade do |t|
     t.string "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_04_25_190915) do
 
   create_table "sightings", force: :cascade do |t|
     t.string "hiker"
-    t.date "day"
+    t.string "day"
     t.text "comment"
     t.integer "flower_id"
     t.datetime "created_at", null: false
