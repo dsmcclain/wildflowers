@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'rails-controller-testing'
 
 class SessionsHelperTest < ActionView::TestCase
 
